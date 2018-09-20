@@ -6,6 +6,7 @@ class Status extends Component {
         super(props);
         this.state = {
             current_color: "ffffff",
+            bulb_img: "bulb-off.gif",
         }
         this.loadLightState = this.loadLightState.bind(this)
     }
@@ -18,6 +19,13 @@ class Status extends Component {
             let c = data.hex
             this.setState({current_color: c})
             console.log('current_color', this.state.current_color)
+
+            if (data.on || data.on == null) {
+                this.setState({bulb_img: 'bulb-on.gif'})
+            }
+            else {
+                this.setState({bulb_img: 'bulb-off.gif'})
+            }
         })
     }
 
@@ -29,9 +37,10 @@ class Status extends Component {
     render() {
         return(
             <div align="center">
-                <div>Current Light Color</div>
-                <div className="status-box"
-                     style={{background: '#' + this.state.current_color}}></div>
+                {/* <div className="status-box"
+                     style={{background: '#' + this.state.current_color}}></div> */}
+                <img src={this.state.bulb_img} className="status-box" style={{background: '#' + this.state.current_color}}/>
+                <div className="status-title">Current Light Color</div>
             </div>
         )
     }
