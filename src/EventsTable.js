@@ -7,9 +7,10 @@ class EventsTable extends Component {
         this.state = {
             events: [],
         };
+        this.loadChanges = this.loadChanges.bind(this)
     }
 
-    componentDidMount() {
+    loadChanges() {
         fetch('http://localhost:8000/changes/')
         .then(results => {
             return results.json();
@@ -31,6 +32,11 @@ class EventsTable extends Component {
             this.setState({events: events})
             console.log('events', this.state.events)
         })
+    }
+
+    componentDidMount() {
+        this.loadChanges()
+        setInterval(this.loadChanges, 1000)
     }
 
     render() {

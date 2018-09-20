@@ -7,9 +7,10 @@ class Status extends Component {
         this.state = {
             current_color: "ffffff",
         }
+        this.loadLightState = this.loadLightState.bind(this)
     }
 
-    componentDidMount() {
+    loadLightState() {
         fetch('http://localhost:8000/light/')
         .then(results => {
             return results.json();
@@ -18,6 +19,11 @@ class Status extends Component {
             this.setState({current_color: c})
             console.log('current_color', this.state.current_color)
         })
+    }
+
+    componentDidMount() {
+        this.loadLightState()
+        setInterval(this.loadLightState, 1000)
     }
 
     render() {
