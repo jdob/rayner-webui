@@ -21,7 +21,8 @@ class EventsTable extends Component {
                         <td>{e.client_id}</td>
                         <td>{e.client_ip}</td>
                         <td>
-                            <div className="color-box" style={{background: '#' + e.color}}></div>
+                            <div className="color-box"
+                                 style={{background: '#' + e.color}}></div>
                         </td>
                         <td>{e.timestamp}</td>
                     </tr>
