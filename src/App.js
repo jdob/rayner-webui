@@ -8,6 +8,9 @@ class App extends Component {
   render() {
     return (
         <div className="container">
+            <div className="page-header">
+                <h1>Rayner Dashboard</h1>
+            </div>
             <div className="row">
                 <div className="col-md-8"><EventsTable/></div>
                 <div className="col-md-4"><Status/></div>
