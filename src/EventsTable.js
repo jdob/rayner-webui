@@ -25,7 +25,7 @@ class EventsTable extends Component {
                             <div className="color-box"
                                  style={{background: '#' + e.color}}></div>
                         </td>
-                        <td>{new Date(e.timestamp).toLocaleString() }</td>
+                        <td>{new Date(e.timestamp).toLocaleString()}</td>
                     </tr>
                 )
             })
