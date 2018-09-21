@@ -11,7 +11,11 @@ class EventsTable extends Component {
     }
 
     loadChanges() {
-        fetch('http://localhost:8000/changes/')
+        let host = process.env.REACT_APP_SERVICE_HOST || 'localhost'
+        let port = process.env.REACT_APP_SERVICE_PORT || '8000'
+        let url = 'http://' + host + ':' + port + '/changes/'
+
+        fetch(url)
         .then(results => {
             return results.json();
         }).then(data => {

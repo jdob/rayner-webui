@@ -12,7 +12,11 @@ class Status extends Component {
     }
 
     loadLightState() {
-        fetch('http://localhost:8000/light/')
+        let host = process.env.REACT_APP_SERVICE_HOST || 'localhost'
+        let port = process.env.REACT_APP_SERVICE_PORT || '8000'
+        let url = 'http://' + host + ':' + port + '/light/'
+
+        fetch(url)
         .then(results => {
             return results.json();
         }).then(data => {
